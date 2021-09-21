@@ -1,0 +1,32 @@
+server:
+  port: 8086
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hotel_db?currentSchema=tl_user
+    username: postgres
+    password: example
+
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
+
+pin:
+  encryption:
+    initVector: RandomInitVector
+    key: cRfTjWnZr4u7x!A%D*G-KaPdSgVkXp2s
+
+
+services:
+  auth:
+    base: http://localhost:8089
+    add-user: /api/v1/user-auth
+
+
+keycloak:
+  auth-server-url: http://localhost:8080/auth
+  realm: hotel-realm
+  resource: hm-cli
+  public-client: true
